@@ -1,18 +1,32 @@
 package ua.myjavastudy.lesson3.task1;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+import static ua.myjavastudy.lesson3.task1.TextConstant.*;
+
 public class View {
-    // Text's constants
-    public static final String PLEASE_WRITE = "Please write down your ";
-    public static final String THANKS_FOR_WRITING = "Thank you for writing down your ";
-    public static final String SURNAME = "surname!";
-    public static final String IT_IS_NOT_A = "Wrong input! It is not a ";
-    public static final String NAME = "name!";
-    public static final String NICKNAME = "nickname!";
+
+    static String MESSAGES_BUNDLE_NAME = "messages";
+    public static final ResourceBundle bundle = ResourceBundle.getBundle(
+            MESSAGES_BUNDLE_NAME,
+            //new Locale("ua", "UA"));
+            new Locale("en"));
 
 
-    public void printMessage(String message) {
-        System.out.println(message);
+    public void printMessage(String seekingVariantOfData, String regex) {
+        System.out.println(
+                bundle.getString(INPUT_STRING_DATA) +
+                bundle.getString(seekingVariantOfData) +
+                regex);
     }
 
+    public void printWrongMessage(String seekingVariantOfData, String regex) {
+        System.out.println(
+                bundle.getString(WRONG_INPUT_DATA) +
+                        bundle.getString(INPUT_STRING_DATA) +
+                        bundle.getString(seekingVariantOfData) +
+                        regex);
+    }
 
 }
